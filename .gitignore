@@ -1,11 +1,18 @@
+# Ignore OS and editor files
+.DS_Store
+.vscode/
+ 
 # Ignore Node.js specific files and directories
 node_modules/
 package-lock.json
 
-# Ignore build output (if applicable)
-build/
+# Ignore build output
 dist/
-
+build/
+ 
+# Ignore client build output (if applicable)
+client/build/
+ 
 # Ignore environment-specific files
 .env.local
 .env.development.local
@@ -19,6 +26,6 @@ yarn-error.log*
 .pnp/
 .pnp.js
 .cache/
-.env
-movie_data/*
-node_modules/
+ 
+# Ignore local settings
+.env.local
