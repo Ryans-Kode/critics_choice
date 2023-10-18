@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+}
+
+
+body {
+  background-color: grey;
+  padding:0;
+  margin: 0;
+  font-family: 'Eczar', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
+
+header a {
+ text-decoration: none; 
+}
+
+a:hover {
+  text-decoration: underline; /* This adds the underline on hover */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  max-height: 80px;
+  padding:15px 50px 20px;
+  justify-content: space-between
+  /* background-color: black; */
+
+}
+#oscar_image_left {
+
+  left: 21%;
+  width:3em;
+ 
+
+}
+#oscar_image_right {
+  position: absolute;
+  right:-8%;
+  width:3em;
+  transform: rotate(25deg);
+
+}
+
+
+.logo_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* background-color: aliceblue; */
+}
+
+.logo_container h2 {
+  font-size: 28px;
+  font-weight: 700;
+    /* margin-right: 15px; */
+    text-wrap: nowrap;
+
+  /* background-color: aqua; */
+}
+
+.critics_list {
+  /* background-color: black; */
+}
+
+.critics_list ul{
+  display: flex;
+  /* background-color: purple;  */
+}
+
+.critics_list li {
+  flex-shrink: 0;
+
+  list-style-type: none;
+
+}
+
+.critics_list a {
+  flex-shrink: 0;
+  color: black;
+  font-size: 18px;
+  font-weight: 900;
+  padding-left: 20px;
+  /* color: #fff; */
+  text-decoration: none;
+
+}
+
+.critics_list a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 1024px) {
+  .critics_list{
+    display: none;
+  }
+  }
