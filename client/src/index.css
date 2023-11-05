@@ -4,22 +4,28 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  font-family: 'Eczar', serif;
 
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: grey;
+  background-color: black;
   padding:0;
   margin: 0;
-  font-family: 'Eczar', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 
-
-
+#academyAwards {
+  margin-top: 25px;
+  font-size: 22px;
+  color:white;
+}
 
 header a {
  text-decoration: none; 
@@ -65,15 +71,11 @@ a:hover {
 .logo_container h2 {
   font-size: 28px;
   font-weight: 700;
-    /* margin-right: 15px; */
-    text-wrap: nowrap;
+  text-wrap: nowrap;
+  color: white;
+  }
 
-  /* background-color: aqua; */
-}
 
-.critics_list {
-  /* background-color: black; */
-}
 
 .critics_list ul{
   display: flex;
@@ -89,11 +91,10 @@ a:hover {
 
 .critics_list a {
   flex-shrink: 0;
-  color: black;
+  color: white;
   font-size: 18px;
   font-weight: 900;
   padding-left: 20px;
-  /* color: #fff; */
   text-decoration: none;
 
 }
