@@ -36,7 +36,7 @@ async function comparator (list,property) {
 
 comparator(academyAwards,'academyAwards');
 comparator(baftaAwards,'bafta');
-comparator(goldenGlobe,'goldenGlobe');
+// comparator(goldenGlobe,'goldenGlobe'); This is erroring json file printout
 comparator(imdb250,'imdb250');
 comparator(nfbPreserved,'nfbPreserved');
 

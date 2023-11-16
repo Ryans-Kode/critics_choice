@@ -25,8 +25,8 @@ function App() {
       </div>
     </header>
       <MovieCarousel awardShow="imdb250" showTitle="IMBD Top 250"/>
-      <MovieCarousel awardShow="nfbPreserved" showTitle="National Film Board Preserved" />
       <MovieCarousel awardShow="academyAwards" showTitle="Oscar Winners" />
+      <MovieCarousel awardShow="nfbPreserved" showTitle="National Film Board Preserved" /> 
       <MovieCarousel awardShow="goldenGlobe" showTitle="Golden Globe Winners" />
       <MovieCarousel awardShow="bafta" showTitle="BAFTA Winners" />
     </>

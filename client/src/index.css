@@ -21,6 +21,7 @@ body {
 }
 
 
+
 #academyAwards {
   margin-top: 25px;
   font-size: 22px;
@@ -69,7 +70,7 @@ a:hover {
 }
 
 .logo_container h2 {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: 700;
   text-wrap: nowrap;
   color: white;
@@ -109,3 +110,13 @@ a:hover {
     display: none;
   }
   }
+
+@media (max-width:768px) {
+  .container{
+    padding: 2rem 1.5rem;
+  } 
+}
+@media (max-width:425) {
+
+
+}
