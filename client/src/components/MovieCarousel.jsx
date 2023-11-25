@@ -6,7 +6,7 @@ const MovieCarousel = (props) => {
 
   function showLeftHandle(e) {
     let handle = e.target.closest(".handle");
-    let leftHandle =handle.closest(".movie-container").querySelector(".left-handle")
+    let leftHandle = handle.closest(".movie-container").querySelector(".left-handle")
     leftHandle.style.visibility = 'visible';
   }
 
@@ -27,17 +27,20 @@ const MovieCarousel = (props) => {
         slider.style.setProperty("--slider-index", sliderIndex - 1);
       }
     } else {
-      // Needed to add +1 because sliderIndex always starts at 0 after first press
+      // Needed to add +1 because sliderIndex always starts at 0 *after* first press
       if (Math.ceil(sliderIndex + 1) < itemCount / itemsPerScreen)
         slider.style.setProperty("--slider-index", sliderIndex + 1);
     }
   }
-
+  const onImageError = (e, movTitle) => {
+    console.log(e.target.alt)
+    e.target.src = `https://placeholder.pics/svg/250x400/DEDEDE/555555/${movTitle}}`
+  }
   return (
     <div className="row">
       <div className="header-title" id={props.showTitle}>
         <h3 className="award-show">{props.showTitle}</h3>
-        
+
       </div>
       <div className="movie-container">
         <button
@@ -59,6 +62,7 @@ const MovieCarousel = (props) => {
                       ? movie.image_portrait
                       : "https://placeholder.pics/svg/200x300"
                   }
+                  onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
                   alt="movie"
 
                 />
@@ -81,7 +85,7 @@ const MovieCarousel = (props) => {
         <button
           className="handle right-handle"
           onClick={(e) => {
-            sliderScroll(e); 
+            sliderScroll(e);
             showLeftHandle(e);
           }}
         >

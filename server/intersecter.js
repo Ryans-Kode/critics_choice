@@ -12,34 +12,54 @@ let winners = {
   goldenGlobe:[],
   bafta:[],
   imdb250:[],
-  nfbPreserved:[],
-  printWinners: async () => {
-    fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
-      if (err) throw err;
-      console.log('File has been saved!');
-    });
-  }
+  nfbPreserved:[],   
 };
-
 
 async function comparator (list,property) {
   for (let i = 0; i < list.length; i++) {
+    console.log(list.titleName[i]);
+
     for (let j = 0; j < netflixDb.length; j++) {
-      if (list[i] == netflixDb[j].title) {
+      if (list[i].includes(netflixDb[j].title)) {
         console.log(netflixDb[j].title)
         winners[property].push(netflixDb[j])
+
       }
     }
   }
-  winners.printWinners();
 }
 
-comparator(academyAwards,'academyAwards');
-comparator(baftaAwards,'bafta');
-// comparator(goldenGlobe,'goldenGlobe'); This is erroring json file printout
-comparator(imdb250,'imdb250');
-comparator(nfbPreserved,'nfbPreserved');
+function compareLists(list,property){
+  for (let i = 0; i < list.titleNames.length; i++) {
 
+    for (let j = 0; j < netflixDb.length; j++) {
+
+
+      if (list.titleNames[i].includes(netflixDb[j].title) && list.dateReleased[i] === netflixDb[j].titlereleased) {
+      winners[property].push(netflixDb[j])  
+      console.log(winners);
+      } 
+    }
+  }
+}
+
+async function printWinners() {
+  fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
+    if (err) throw err;
+    console.log('File has been saved!');
+  });
+}
+
+function main () {
+  compareLists(academyAwards,'academyAwards');
+  // compareLists(baftaAwards,'bafta');
+  compareLists(goldenGlobe,'goldenGlobe');
+  compareLists(imdb250,'imdb250');
+  compareLists(nfbPreserved,'nfbPreserved');
+  printWinners();
+ };
+
+ main();
 
 
 

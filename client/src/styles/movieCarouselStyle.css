@@ -35,7 +35,6 @@
 
 
 .slider {
-  
   --items-per-screen: 6;
   --slider-index: 0;
   display: flex;
@@ -66,14 +65,12 @@
   padding: var(--img-gap);
   padding-bottom: 4px;
   background-clip:padding-box;
-  aspect-ratio: 4/5;
+  aspect-ratio: 4/5!;
 }
 
 
 .movie-details {
   position:absolute;
-  max-width: 0px;
-  padding: 0px;
   color: rgba(255, 255, 255, 0.75);
   background-color: black;
   overflow: hidden;
@@ -196,23 +193,37 @@
   gap: .25rem;
 }
 
-
+@media (max-width:2560px) {
+  .movie-card > a > img {
+    max-height: 530px;
+  }
+}
 
 @media (max-width:1440px) {
   .slider {
     --items-per-screen: 5;
+  }
+  .movie-card > a > img {
+    max-height: 330px;
   }
 }
 @media (max-width:1024px) {
   .slider {
     --items-per-screen: 4;
   }
+  .movie-card > a > img {
+    max-height: 275px;
+  }
 }
 @media (max-width:768px) {
   .slider {
     --items-per-screen: 3;
   }
+  .movie-card > a > img {
+    max-height: 265px;
+  }
 }
+
 
 @media (max-width:600px) {
   .slider {
