@@ -6,13 +6,15 @@ const imdb250 = require('./movie_data/IMDB250.json');
 const goldenGlobe = require('./movie_data/GoldenGlobe.json');
 const netflixDb = require('./movie_data/netflixDb.json')
 const nfbPreserved = require('./movie_data/nfbPreserved.json')
+const bestDirector = require('./movie_data/bestDirector.json')
 
 let winners = {
   academyAwards:[],
   goldenGlobe:[],
   bafta:[],
   imdb250:[],
-  nfbPreserved:[],   
+  nfbPreserved:[], 
+  bestDirector:[]  
 };
 
 async function comparator (list,property) {
@@ -56,6 +58,8 @@ function main () {
   compareLists(goldenGlobe,'goldenGlobe');
   compareLists(imdb250,'imdb250');
   compareLists(nfbPreserved,'nfbPreserved');
+  compareLists(bestDirector,'bestDirector');
+
   printWinners();
  };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import movies from "../data/winnersOnNetflix.json";
 import "../styles/movieCarouselStyle.css";
+import star from "../star.png"
 
 const MovieCarousel = (props) => {
 
@@ -76,7 +77,8 @@ const MovieCarousel = (props) => {
                   {movie.rating ? movie.rating : "n/a"}
                 </div>
                 <div className="title-imdb">
-                  IMDB: {movie.imdb ? movie.imdb : "n/a"}
+                  <img src={star}></img>
+                   {movie.imdb ? movie.imdb : "n/a"}
                 </div>
               </div>
             </div>

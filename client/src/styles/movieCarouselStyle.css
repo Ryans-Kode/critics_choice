@@ -52,7 +52,6 @@
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: calc(100% / var(--items-per-screen));
   aspect-ratio: 4/5;
-  margin-bottom: 6.25rem;
 }
 
 .movie-card > a > img:active {
@@ -65,12 +64,12 @@
   padding: var(--img-gap);
   padding-bottom: 4px;
   background-clip:padding-box;
-  aspect-ratio: 4/5!;
+  aspect-ratio: 4/5;
 }
 
 
 .movie-details {
-  position:absolute;
+  /* position:absolute; */
   color: rgba(255, 255, 255, 0.75);
   background-color: black;
   overflow: hidden;
@@ -79,7 +78,7 @@
   flex-wrap: wrap;
   padding: var(--img-gap);
   padding-top: 0px;  
-  
+    
 }
 
 .title-name {
@@ -124,14 +123,20 @@
 
 .title-imdb {
   white-space: nowrap;
+  display: flex;
+  align-content: center;
   width: 100%;
-  font-size: 12px;
-  line-height: 16px;
-  margin-top: 2px;
-  padding-left: 4px;
+  font-size: .80rem;
+  /* margin-top: 2px; */
+  /* padding-left: 4px; */
   letter-spacing: 0.15px;
+}
 
-
+.title-imdb img {
+  margin-top: 3.25px;
+  margin-right: 2px;
+  width: 14px;
+  height: 14px;
 }
 
 .handle {
@@ -187,7 +192,6 @@
 }
 
 
-
 .progress-bar {
   display: flex;
   gap: .25rem;
@@ -206,6 +210,16 @@
   .movie-card > a > img {
     max-height: 330px;
   }
+}
+
+@media (max-width:1400px){
+  .movie-card{
+    margin-bottom: 6.25rem;
+  }
+  .movie-details {
+    position: absolute;
+  }
+  
 }
 @media (max-width:1024px) {
   .slider {
