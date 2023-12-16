@@ -1,9 +1,7 @@
-import React from "react";
-import movies from "../data/winnersOnNetflix.json";
 import "../styles/movieCarouselStyle.css";
 import star from "../star.png"
 
-const MovieCarousel = (props) => {
+const MovieCarousel = ({movies = [], showTitle}) => {
 
   function showLeftHandle(e) {
     let handle = e.target.closest(".handle");
@@ -33,14 +31,10 @@ const MovieCarousel = (props) => {
         slider.style.setProperty("--slider-index", sliderIndex + 1);
     }
   }
-  const onImageError = (e, movTitle) => {
-    console.log(e.target.alt)
-    e.target.src = `https://placeholder.pics/svg/250x400/DEDEDE/555555/${movTitle}}`
-  }
   return (
     <div className="row">
-      <div className="header-title" id={props.showTitle}>
-        <h3 className="award-show">{props.showTitle}</h3>
+      <div className="header-title" id={showTitle}>
+        <h3 className="award-show">{showTitle}</h3>
 
       </div>
       <div className="movie-container">
@@ -53,7 +47,7 @@ const MovieCarousel = (props) => {
           <div className="text">&#8249;</div>
         </button>
         <div className="slider">
-          {movies[props.awardShow].map((movie) => (
+          {movies.map((movie) => (
             <div className="movie-card">
               <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
                 {" "}

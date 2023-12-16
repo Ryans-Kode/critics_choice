@@ -126,7 +126,7 @@ a:hover {
     display: none;
     text-align: center;
     position: absolute;
-    top:14%;
+    top:12%;
     width: 100%;
     left: 0;
     height: 11rem;
@@ -165,19 +165,11 @@ a:hover {
     padding: 2rem 1.5rem;
   } 
 }
-@media (max-width:600px) {
-  .nav_links {
-    top:15%;
-  }
-}
-@media (max-width:425px) {
-  .nav_links {
-    top:12%;
-  }
-}
+
 @media (max-width:320px) {
   #oscar_image_right {
     display: none;
   }
+
   
 }

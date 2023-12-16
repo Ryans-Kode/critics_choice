@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './oscar.png';
 import './App.css';
 import MovieCarousel from './components/MovieCarousel';
+// import movies from "./data/winnersOnNetflix.json";
+
 
 function App() {
+
+  const [movies, setMovies] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://192.168.0.168:3001/data.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setMovies(data);
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
  
   return (
+ 
     <><header>
       <div className='container'>
         <div class='logo_container'>
@@ -30,13 +52,11 @@ function App() {
       </div>
 
     </header>
-      <MovieCarousel awardShow="imdb250" showTitle="IMBD Top 250"/>
-      <MovieCarousel awardShow="academyAwards" showTitle="Oscar Winners" />
-      <MovieCarousel awardShow="nfbPreserved" showTitle="National Film Board Preserved" /> 
-      <MovieCarousel awardShow="goldenGlobe" showTitle="Golden Globe Winners" />
-      <MovieCarousel awardShow="bestDirector" showTitle="Best Director" />
-
-      {/* <MovieCarousel awardShow="bafta" showTitle="BAFTA Winners" /> */}
+      <MovieCarousel movies={movies.imdb250} showTitle="IMBD Top 250"/>
+      <MovieCarousel movies={movies.academyAwards} showTitle="Oscar Winners" />
+      <MovieCarousel movies={movies.nfbPreserved} showTitle="National Film Board Preserved" /> 
+      <MovieCarousel movies={movies.goldenGlobe} showTitle="Golden Globe Winners" />
+      <MovieCarousel movies={movies.bestDirector} showTitle="Best Director" />
     </>
   );
 }
