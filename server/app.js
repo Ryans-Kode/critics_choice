@@ -1,15 +1,20 @@
 const fs = require('fs'); 
+const cloudinary = require('cloudinary').v2;
 const puppeteer = require('puppeteer');
+const movieDbsite = process.env.MOVIE_DB;
+
 const intersector = require('./intersecter.js');
 const scraper = require('./scraper.js');
 const schedule = require('node-schedule');
-const movieDbsite = process.env.MOVIE_DB;
+const imageRehoster = require('./imageRehoster.js');
+
 require('dotenv').config();
 
 async function main(){
-    const getNetflix = await scraper.getNetflixDb();
+    const getNetflixDb = await scraper.getNetflixDb();
     const scrapeSites = await scraper.scrape();
     const generateWinners = await intersector.compareLists();
+    const reHostImages = await imageRehoster.main();
 }
 
 
