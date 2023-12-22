@@ -1,12 +1,14 @@
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs'); 
 const winners = require('./movie_data/winnersOnNetflix.json');
+require('dotenv').config();
+
 
           
 cloudinary.config({ 
-  cloud_name: 'deln87b8o', 
-  api_key: '288221112525771', 
-  api_secret: 'qVdrJ7Lh4I3OLCvJbq6bZRLDLVE' 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
 });
   
 async function main (){
