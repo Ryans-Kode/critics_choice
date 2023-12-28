@@ -19,6 +19,7 @@ async function main(){
 
 
 // Schedule the job to run every Sunday at a specific time (e.g., 12:00 PM)
-const job = schedule.scheduleJob('0 12 * * 0', function() {
-  main();
-});
+// const job = schedule.scheduleJob('0 12 * * 0', function() {
+//   main();
+// });
+main();
