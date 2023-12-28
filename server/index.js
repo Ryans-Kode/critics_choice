@@ -14,6 +14,6 @@ app.get('/data.json', (req, res) => {
 });
 
 // Start the server
-app.listen(port, hostname, () => {
+app.listen(PORT, HOSTNAME, () => {
   console.log(`Server is running on http://${HOST}:${PORT}`);
 });
