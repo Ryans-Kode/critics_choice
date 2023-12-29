@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
+const port = 3001;
+const hostname = '192.168.0.168';
 const filePath = path.join(__dirname, 'movie_data', 'winnersOnNetflix.json');
 
 app.get('/data.json', (req, res) => {
@@ -14,6 +14,6 @@ app.get('/data.json', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, HOST, () => {
-  console.log(`Server is running on http://${HOST}:${PORT}`);
+app.listen(port, hostname, () => {
+  console.log(`Server is running on http://${hostname}:${port}`);
 });
