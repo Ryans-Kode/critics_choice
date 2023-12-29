@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.0.168:3001/data.json');
+        const response = await fetch('https://critics-choice.onrender.com/data.json');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
