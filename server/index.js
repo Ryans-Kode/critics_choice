@@ -1,10 +1,15 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
-const port = 3001;
-const hostname = '192.168.0.168';
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 const filePath = path.join(__dirname, 'movie_data', 'winnersOnNetflix.json');
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.get('/data.json', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,6 +19,6 @@ app.get('/data.json', (req, res) => {
 });
 
 // Start the server
-app.listen(port, hostname, () => {
-  console.log(`Server is running on http://${hostname}:${port}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 });
