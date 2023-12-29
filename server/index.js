@@ -8,6 +8,9 @@ const filePath = path.join(__dirname, 'movie_data', 'winnersOnNetflix.json');
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
