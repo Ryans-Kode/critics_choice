@@ -19,11 +19,12 @@ const MovieCarousel = ({movies = [], showTitle}) => {
     const itemsPerScreen = parseInt(
       getComputedStyle(slider).getPropertyValue("--items-per-screen")
     );
-    console.log(itemCount)
     if (e.className === "handle left-handle") {
-      console.log(sliderIndex - 1 >= 0);
       if (sliderIndex - 1 >= 0) {
         slider.style.setProperty("--slider-index", sliderIndex - 1);
+      } else {
+        let leftHandle = e.closest(".movie-container").querySelector(".left-handle")
+        leftHandle.style.visibility = 'hidden';
       }
     } else {
       // Needed to add +1 because sliderIndex always starts at 0 *after* first press
@@ -48,14 +49,14 @@ const MovieCarousel = ({movies = [], showTitle}) => {
         </button>
         <div className="slider">
           {movies.map((movie) => (
-            <div className="movie-card">
+            <div className="movie-card" >
               <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
                 {" "}
                 <img
                   src={
                     movie.image_portrait
                       ? movie.image_portrait
-                      : "https://placeholder.pics/svg/200x300"
+                      : `https://placeholder.pics/svg/420x520/DEDEDE/555555/${movie.title}`
                   }
                   onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
                   alt="movie"
