@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import logo from './oscar.png';
 import './App.css';
 import MovieCarousel from './components/MovieCarousel';
-// import movies from "./data/winnersOnNetflix.json";
 
 
 function App() {

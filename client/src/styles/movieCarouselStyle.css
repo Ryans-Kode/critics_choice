@@ -144,7 +144,7 @@
   border-radius: 1rem;
   flex-grow: 0;
   flex-shrink: 0;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 10;
   margin: var(--img-gap) 0;
   width: var(--handle-size);
@@ -240,6 +240,13 @@
 
 
 @media (max-width:600px) {
+
+  :root {
+    --handle-size: 2.5rem;
+    --img-gap: 0.5rem;
+  
+  }
+  
   .slider {
     --items-per-screen: 3;
   }
@@ -257,8 +264,7 @@
   .title-name {
     font-size: small;
   }
-  .title-year , .title-rating, 
-  .title-imdb {
+  .title-year , .title-rating {
     display: none;
   }
 
@@ -270,14 +276,17 @@
   }
   
   .handle {
+    border-radius: 0;
     padding: .25rem;
+    margin:  0;
+    width: var(--handle-size);
   }
 
 }
 
 @media (max-width:425px) {
   .slider {
-    --items-per-screen: 2;
+    --items-per-screen: 2.25;
   }
   .award-show {
     font-size: 1.25rem;
@@ -285,5 +294,25 @@
   .movie-details {
     margin:0px;
     padding-left: .25rem
+  }
+}
+
+@media only screen and (max-width: 768px) and (pointer: coarse) {
+  .movie-container{
+    width: 90%;
+    margin: auto;
+  }
+  .slider {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    margin: 0 auto 1.25rem auto;
+
+  }
+  .handle {
+    display: none;
+  }
+  .header-title {
+    padding-left: 8%;
   }
 }
