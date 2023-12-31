@@ -56,12 +56,13 @@ const MovieCarousel = ({movies = [], showTitle}) => {
                   src={
                     movie.image_portrait
                       ? movie.image_portrait
-                      : `https://placeholder.pics/svg/420x520/DEDEDE/555555/${movie.title}`
+                      : `https://placehold.jp/54/e0e0e0/000000/420x520.png?text=${movie.title}`
                   }
                   onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
                   alt="movie"
 
                 />
+                
               </a>
               <div className="movie-details">
                 <div className="title-name">{movie.title}</div>
