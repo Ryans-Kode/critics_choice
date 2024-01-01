@@ -29,7 +29,7 @@ function App() {
  
     <><header>
       <div className='container'>
-        <div class='logo_container'>
+        <div className='logo_container'>
           <h2>Critics Choice</h2>
           <img id='oscar_image_left' src={logo} alt='logo'></img>
           <img id='oscar_image_right' src={logo} alt='logo'></img>

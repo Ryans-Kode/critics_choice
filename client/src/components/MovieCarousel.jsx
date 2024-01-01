@@ -36,7 +36,6 @@ const MovieCarousel = ({movies = [], showTitle}) => {
     <div className="row">
       <div className="header-title" id={showTitle}>
         <h3 className="award-show">{showTitle}</h3>
-
       </div>
       <div className="movie-container">
         <button
@@ -48,22 +47,27 @@ const MovieCarousel = ({movies = [], showTitle}) => {
           <div className="text">&#8249;</div>
         </button>
         <div className="slider">
-          {movies.map((movie) => (
-            <div className="movie-card" >
-              <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
-                {" "}
-                <img
-                  src={
-                    movie.image_portrait
-                      ? movie.image_portrait
-                      : `https://placehold.jp/54/e0e0e0/000000/420x520.png?text=${movie.title}`
-                  }
-                  onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
-                  alt="movie"
-
-                />
-                
-              </a>
+          {movies.map((movie, index) => (
+            <div className="movie-card" key={index}>
+              <div className="poster-container">
+                <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
+                  {" "}
+                  <img
+                    src={
+                      movie.image_portrait
+                        ? movie.image_portrait
+                        : `https://placehold.jp/54/e0e0e0/000000/420x520.png?text=${movie.title}`
+                    }
+                    onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
+                    alt="movie"
+                  />  
+               
+                <div className="overlay" >
+                  <span className="play-button">&#9654;</span>
+                  <span className="mobile-play-button"></span>
+                </div>
+                </a>
+              </div>
               <div className="movie-details">
                 <div className="title-name">{movie.title}</div>
                 <div className="title-year">
