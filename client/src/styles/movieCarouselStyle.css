@@ -271,7 +271,7 @@
 }
 @media (max-width:768px) {
   .slider {
-    --items-per-screen: 3.25;
+    --items-per-screen: 3;
   }
   .movie-card > a > img {
     max-height: 265px;
@@ -317,9 +317,9 @@
   
   .handle {
     border-radius: 0;
-    padding: .25rem;
     margin:  0;
     width: var(--handle-size);
+    padding-top: 2.5rem;
   }
   .mobile-play-button {
     display: none;

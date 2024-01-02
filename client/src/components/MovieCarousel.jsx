@@ -56,14 +56,14 @@ const MovieCarousel = ({movies = [], showTitle}) => {
                     src={
                       movie.image_portrait
                         ? movie.image_portrait
-                        : `https://placehold.jp/54/e0e0e0/000000/420x520.png?text=${movie.title}`
+                        : `https://placehold.jp/54/9798a5/ffffff/420x520.png?text=${movie.title}&css=%7B%22background%22%3A%22%20-webkit-gradient(linear%2C%20left%20top%2C%20left%20bottom%2C%20from(%23666666)%2C%20to(%23cccccc))%22%7D`
                     }
-                    onError={(e) => { e.target.src = `https://placeholder.pics/svg/250x350/DEDEDE/555555/${movie.title}` }}
+                    onError={(e) => { e.target.src = `https://placehold.jp/54/9798a5/ffffff/420x520.png?text=${movie.title}&css=%7B%22background%22%3A%22%20-webkit-gradient(linear%2C%20left%20top%2C%20left%20bottom%2C%20from(%23666666)%2C%20to(%23cccccc))%22%7D` }}
                     alt="movie"
                   />  
                
                 <div className="overlay" >
-                  <span className="play-button">&#9654;</span>
+                  <span className="play-button">&#9654;</span>  
                   <span className="mobile-play-button"></span>
                 </div>
                 </a>

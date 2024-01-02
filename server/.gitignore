@@ -20,5 +20,4 @@ yarn-error.log*
 .pnp.js
 .cache/
 .env
-movie_data/*
 node_modules/
