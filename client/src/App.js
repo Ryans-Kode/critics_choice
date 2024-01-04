@@ -4,14 +4,17 @@ import './App.css';
 import MovieCarousel from './components/MovieCarousel';
 
 
+const fetchThis = process.env.REACT_APP_ENV === 'production' ? 
+  'http://critics-choice.onrender/data.json' : 'http://localhost:3001/data.json'
+  
 function App() {
-
   const [movies, setMovies] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.0.168:3001/data.json');
+        console.log(fetch)
+        const response = await fetch(fetchThis);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -49,13 +52,14 @@ function App() {
           </ul>
         </div>
       </div>
-
     </header>
+
       <MovieCarousel movies={movies.imdb250} showTitle="IMBD Top 250"/>
       <MovieCarousel movies={movies.academyAwards} showTitle="Oscar Winners" />
       <MovieCarousel movies={movies.nfbPreserved} showTitle="National Film Board Preserved" /> 
       <MovieCarousel movies={movies.goldenGlobe} showTitle="Golden Globe Winners" />
       <MovieCarousel movies={movies.bestDirector} showTitle="Best Director" />
+      
     </>
   );
 }

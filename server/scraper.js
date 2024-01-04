@@ -1,6 +1,6 @@
 const fs = require('fs'); 
 const puppeteer = require('puppeteer');
-require('dotenv').config();
+require('dotenv').config({ path: '.env.development' })
 const movieDbsite = process.env.MOVIE_DB;
 
 
@@ -96,19 +96,6 @@ async function scrape() {
     await browser.close(); 
 }
 
-// async function compareLists(list,property){
-//   const netflixDb = await fs.readFile('./movie_data/netflixDb.json');
-//   for (let i = 0; i < list.titleNames.length; i++) {
-
-//     for (let j = 0; j < netflixDb.length; j++) {
-
-//       if (list.titleNames[i].includes(netflixDb[j].title) && list.dateReleased[i] === netflixDb[j].titlereleased) {
-//       winners[property].push(netflixDb[j])  
-//       console.log(winners);
-//       } 
-//     }
-//   }
-// }
 module.exports = {
   scrape,
   getNetflixDb,

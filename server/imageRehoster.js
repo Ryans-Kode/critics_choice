@@ -1,7 +1,8 @@
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs'); 
 const winners = require('./movie_data/winnersOnNetflix.json');
-require('dotenv').config();
+require('dotenv').config({ path: '.env.keys' })
+
 
 
           
