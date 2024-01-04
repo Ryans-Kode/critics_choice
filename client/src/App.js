@@ -5,7 +5,7 @@ import MovieCarousel from './components/MovieCarousel';
 
 
 const fetchThis = process.env.REACT_APP_ENV === 'production' ? 
-  'http://critics-choice.onrender.com/data.json' : 'http://localhost:3001/data.json'
+  'https://critics-choice.onrender.com/data.json' : 'http://localhost:3001/data.json'
   
 function App() {
   const [movies, setMovies] = useState('');
