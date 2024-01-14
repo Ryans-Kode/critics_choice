@@ -115,7 +115,7 @@ export default function MovieCarousel({ movies = [], showTitle }) {
             handleScroll(e);
           }}
         >
-          <div className="text">&#8249;</div>
+          <div className="chevron">&#8249;</div>
         </button>
         <div className="slider"> {renderMovieCards()}</div>
         <button
@@ -125,7 +125,7 @@ export default function MovieCarousel({ movies = [], showTitle }) {
             showLeftHandle(e);
           }}
         >
-          <div className="text">&#8250;</div>
+          <div className="chevron">&#8250;</div>
         </button>
       </div>
     </div>
