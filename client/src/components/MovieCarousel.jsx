@@ -17,9 +17,8 @@ export default function MovieCarousel({ movies = [], showTitle }) {
       timeoutId = setTimeout(() => {
         func(...args);
       }, 250);
-    }
+    };
   };
-
 
   function displayHandles() {
     console.log("Resized");
@@ -70,10 +69,12 @@ export default function MovieCarousel({ movies = [], showTitle }) {
   function renderMovieCards() {
     return movies.map((movie, index) => (
       <div className="movie-card" key={index}>
-        <div className="poster-container">
-          <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
-            {" "}
+        <a href={`https://www.netflix.com/watch/${movie.netflixid}`}>
+          {/* {" "} */}
+
+          <div className="poster-container">
             <img
+              className="poster"
               src={
                 movie.image_portrait
                   ? movie.image_portrait
@@ -84,19 +85,20 @@ export default function MovieCarousel({ movies = [], showTitle }) {
               }}
               alt="movie"
             />
-            <div className="overlay">
+            <div className="buttons-container">
               <span className="play-button">&#9654;</span>
               <span className="mobile-play-button"></span>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
+
         <div className="movie-details">
           <div className="title-name">{movie.title}</div>
           <div className="title-year">{movie.titlereleased ? movie.titlereleased : "n/a"}</div>
           <div className="title-rating">{movie.rating ? movie.rating : "n/a"}</div>
           <div className="title-imdb">
             <img src={star} alt="stars"></img>
-            {movie.imdb ? movie.imdb : "n/a"}
+            {movie.imdb ? movie.imdb : "N/A"}
           </div>
         </div>
       </div>

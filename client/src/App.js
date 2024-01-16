@@ -6,7 +6,7 @@ import Header from "./components/Header";
 const fetchThis =
   process.env.REACT_APP_ENV === "production"
     ? "http://critics-choice.onrender/data.json"
-    : "http://localhost:3001/data.json";
+    : "http://192.168.0.168:3001/data.json";
 
 function App() {
   const [movies, setMovies] = useState("");
