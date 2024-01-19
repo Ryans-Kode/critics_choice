@@ -5,7 +5,7 @@ import Header from "./components/Header";
 
 const fetchThis =
   process.env.REACT_APP_ENV === "production"
-    ? "https://critics-choice.onrender/data.json"
+    ? "https://critics-choice.onrender.com/data.json"
     : "http://192.168.0.168:3001/data.json";
 
 function App() {
