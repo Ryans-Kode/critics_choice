@@ -8,6 +8,7 @@
 :root {
   --handle-size: 3rem;
   --img-gap: .60rem
+  
 }
 
 
@@ -21,6 +22,7 @@
   font-size: 1.75rem;
   padding-left: .45rem;
   color: white;
+  letter-spacing: .0719rem;
 }
 
 .header-title {
@@ -49,8 +51,8 @@
 }
 
 .left-handle {
-  background-color: #20202000;
-  backdrop-filter: blur(1px); 
+  background-color: #20202053;
+  backdrop-filter: blur(2px); 
   visibility: hidden;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -296,20 +298,9 @@
   .movie-card > a > img {
     width: 100%;
     padding: .20rem;
-    aspect-ratio: 4/5;
+    /* aspect-ratio: 4/5; */
   }
   
-  .handle {
-    border-radius: 0;
-    margin:  0;
-    width: var(--handle-size);
-    padding-top: 2.5rem;
-  }
-
-  .left-handle {
-    margin-left: 24px;
-  }
-
 }
 
 @media (max-width:425px) {
@@ -319,6 +310,8 @@
 
   .award-show {
     font-size: 1.25rem;
+    text-overflow: ellipsis;
+
   }
 
   .movie-details {
@@ -328,7 +321,7 @@
   
 }
 
-@media only screen and (max-width: 768px) and (pointer: coarse) {
+@media only screen and (pointer: coarse) {
 
   @media (max-width:768px) {
     .slider {
@@ -344,6 +337,12 @@
   .movie-container{
     width: 90%;
     margin: auto;
+  }
+  .award-show {
+    font-size: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .slider {
     overflow-x: scroll;
@@ -367,4 +366,5 @@
   .poster-container:hover > .buttons-container> .mobile-play-button {  
     visibility: visible;
   }
+  
 }
