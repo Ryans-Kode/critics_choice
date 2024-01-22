@@ -1,11 +1,12 @@
-const fs = require('fs'); 
+const fsPromises = require('fs').promises;
 const puppeteer = require('puppeteer');
 require('dotenv').config({ path: '.env.development' })
 const movieDbsite = process.env.MOVIE_DB;
 
 
-const imdbTitleSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-872d7ac7-0.fqEQWL > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div:nth-child(2) > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-21df249b-3.gkfizf > div.sc-479faa3c-0.fMoWnh > div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-479faa3c-9.dkLVoC.dli-title > a > h3';
-const imdbYearSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-872d7ac7-0.fqEQWL > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div:nth-child(2) > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li> div.ipc-metadata-list-summary-item__c > div > div > div.sc-21df249b-3.gkfizf > div.sc-479faa3c-0.fMoWnh > div.sc-479faa3c-7.jXgjdT.dli-title-metadata > span:nth-child(1)';
+const imdbTitleSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-9b618954-0.sqGLE > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div:nth-child(2) > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-b4e41383-3.bdsEXx > div.sc-1e00898e-0.jyXHpt > div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-1e00898e-9.jQixeG.dli-title > a > h3'
+const imdbYearSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-9b618954-0.sqGLE > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-b4e41383-3.bdsEXx > div.sc-1e00898e-0.jyXHpt > div.sc-1e00898e-7.hcJWUf.dli-title-metadata > span:nth-child(1)';
+
 
 let netflixDb = {};
 let websites = [
@@ -37,21 +38,22 @@ let websites = [
   ];
 
   async function getNetflixDb() {
+    console.log('grabing netflix db')
     try {
       const response = await fetch(movieDbsite);
       const data = await response.json();
-      fs.writeFile("./movie_data/netflixDb.json", JSON.stringify(data), (err) => {
+      fsPromises.writeFile("./movie_data/netflixDb.json", JSON.stringify(data), (err) => {
         if (err) throw err;
-        console.log('File has been saved!');
       });
     } catch (error) {
       console.error('Error:', error);
     }
+    console.log('File has been saved!');
   }
   
 
 async function scrape() {
-
+    console.log('starting scraping')
     const browser =  await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
@@ -84,21 +86,18 @@ async function scrape() {
       }
       // console.log(site);
 
-    }
-    async function writeToJson(site,data){
-      fs.writeFile('./movie_data/'+site.name+'.json', JSON.stringify(data), (err) => {
-        if (err) throw err;
-        console.log('File has been saved!');
-      });
-    }
- 
+    } 
 
     await browser.close(); 
 }
 
+async function main()
+{
+  const netfilixDB = await getNetflixDb()
+  const scraper = await scrape()
+}
+
 module.exports = {
-  scrape,
-  getNetflixDb,
-  websites,
-  netflixDb 
+  main,
+  websites 
 };

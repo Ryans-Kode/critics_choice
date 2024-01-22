@@ -1,4 +1,5 @@
 const fs = require('fs'); 
+const fsPromises = require('fs').promises;
 const scraper = require('./scraper.js');
 
 
@@ -12,7 +13,8 @@ let winnersOnNetflix = {
 };
 
 async function compareLists(){
-  const netflixDb = await require('./movie_data/netflixDb.json')
+  console.log('starting to compare lists');
+  const netflixDb = await require('./movie_data/netflixDb.json');
   const awardWinners = await scraper.websites
   for (winner of awardWinners){
     for(let i = 0; i < winner.titles.length; i++){
@@ -23,20 +25,27 @@ async function compareLists(){
       }
     }
   }
-  printWinners(winnersOnNetflix)
+  console.log('completed comparing lists');
 }
 
-async function printWinners(winners) {
-  fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
+async function printWinners(winnersOnNetflix) {
+  console.log('starting to print list')
+  await fsPromises.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winnersOnNetflix), (err) => {
     if (err) throw err;
     console.log('File has been saved!');
   });
 }
 
-
+async function main() {
+  const compare = await compareLists();
+  const print = await printWinners(winnersOnNetflix);
+}
 
 module.exports = {
-  compareLists
+  main,
+  compareLists,
+  printWinners,
+  winnersOnNetflix
 }
 
 

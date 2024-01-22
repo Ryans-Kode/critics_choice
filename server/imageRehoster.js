@@ -1,9 +1,6 @@
 const cloudinary = require('cloudinary').v2;
 const fs = require('fs'); 
-const winners = require('./movie_data/winnersOnNetflix.json');
 require('dotenv').config({ path: '.env.keys' })
-
-
 
           
 cloudinary.config({ 
@@ -13,18 +10,25 @@ cloudinary.config({
 });
   
 async function main (){
-  for (const awardshow in winners) {
-    if (winners.hasOwnProperty(awardshow)) {
-      for (const movie of winners[awardshow]) {
-        const updatedUrl = await uploadImage(movie.image_portrait);
-        movie.image_portrait = updatedUrl;
+  try {
+    console.log('starting to rehost images....')
+    const winners = await require('./movie_data/winnersOnNetflix.json');
+    for (const awardshow in winners) {
+      if (winners.hasOwnProperty(awardshow)) {
+        for (const movie of winners[awardshow]) {
+          const updatedUrl = await uploadImage(movie.image_portrait);
+          console.log(updatedUrl)
+          movie.image_portrait = updatedUrl;
+        }
       }
     }
+    await printWinners(winners)
+    
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Failed to upload image: ${error.message}`);
   }
-  fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
-    if (err) throw err;
-    console.log('File has been saved!');
-  });
+
 }
   
 
@@ -43,7 +47,13 @@ const uploadImage = async (imagePath) => {
     console.error(error);
   }
 };
-  main();  
+
+async function printWinners(winners) {
+  fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
+    if (err) throw err;
+    console.log('File has been saved!');
+  });
+}
 
   module.exports = {
     main
