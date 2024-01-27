@@ -1,11 +1,12 @@
-const fsPromises = require('fs').promises;
+const fs = require('fs');
 const puppeteer = require('puppeteer');
 require('dotenv').config({ path: '.env.development' })
 const movieDbsite = process.env.MOVIE_DB;
 
 
-const imdbTitleSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-9b618954-0.sqGLE > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div:nth-child(2) > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-b4e41383-3.bdsEXx > div.sc-1e00898e-0.jyXHpt > div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-1e00898e-9.jQixeG.dli-title > a > h3'
-const imdbYearSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-9b618954-0.sqGLE > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-b4e41383-3.bdsEXx > div.sc-1e00898e-0.jyXHpt > div.sc-1e00898e-7.hcJWUf.dli-title-metadata > span:nth-child(1)';
+
+const imdbTitleSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-a80fc520-0.kpyNQn > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-73c670dc-3.cFICGu > div.sc-1e00898e-0.jyXHpt > div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-1e00898e-9.jQixeG.dli-title > a > h3';
+const imdbYearSelector = '#__next > main > div.ipc-page-content-container.ipc-page-content-container--center.sc-a80fc520-0.kpyNQn > div.ipc-page-content-container.ipc-page-content-container--center > section > section > div > section > section > div:nth-child(2) > div > section > div.ipc-page-grid.ipc-page-grid--bias-left.ipc-page-grid__item.ipc-page-grid__item--span-2 > div.ipc-page-grid__item.ipc-page-grid__item--span-2 > ul > li > div.ipc-metadata-list-summary-item__c > div > div > div.sc-73c670dc-3.cFICGu > div.sc-1e00898e-0.jyXHpt > div.sc-1e00898e-7.hcJWUf.dli-title-metadata > span:nth-child(1)';
 
 
 let netflixDb = {};
@@ -42,7 +43,7 @@ let websites = [
     try {
       const response = await fetch(movieDbsite);
       const data = await response.json();
-      fsPromises.writeFile("./movie_data/netflixDb.json", JSON.stringify(data), (err) => {
+      fs.writeFile("./movie_data/netflixDb.json", JSON.stringify(data), (err) => {
         if (err) throw err;
       });
     } catch (error) {
@@ -76,10 +77,8 @@ async function scrape() {
             return content;
           }, site.yearSelector); 
           site.dateReleased = titleReleased;
-          console.log(`${site.name} winning titles date has been scraped`)
+          console.log(`${site.name} winning dates has been scraped`)
 
-
-          // writeToJson(site,movie);
 
       } catch (error) {
         console.error('Error in page.evaluate:', error);

@@ -1,7 +1,3 @@
-const fs = require('fs'); 
-const cloudinary = require('cloudinary').v2;
-const puppeteer = require('puppeteer');
-const movieDbsite = process.env.MOVIE_DB;
 require('dotenv').config({ path: '.env.keys' })
 
 
@@ -12,9 +8,13 @@ const imageRehoster = require('./imageRehoster.js');
 require('dotenv').config();
 
 async function main(){
-    const scrape = await scraper.main();
-    const generateWinners = await intersector.main();
-    const reHostImages = await imageRehoster.main();
+    try {
+        const scrape = await scraper.main();
+        const generateWinners = await intersector.main();
+        const reHostImages = await imageRehoster.main();
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 

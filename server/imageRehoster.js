@@ -49,10 +49,15 @@ const uploadImage = async (imagePath) => {
 };
 
 async function printWinners(winners) {
-  fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
-    if (err) throw err;
-    console.log('File has been saved!');
-  });
+  try {
+    fs.writeFile('./movie_data/winnersOnNetflix.json', JSON.stringify(winners), (err) => {
+      if (err) throw err;
+      console.log('File has been saved!');
+    });
+  } catch(error) {
+    console.error(error)
+  }
+
 }
 
   module.exports = {
